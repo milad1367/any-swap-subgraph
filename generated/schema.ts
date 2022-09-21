@@ -8,7 +8,7 @@ import {
   store,
   Bytes,
   BigInt,
-  BigDecimal
+  BigDecimal,
 } from "@graphprotocol/graph-ts";
 
 export class ExampleEntity extends Entity {
@@ -42,30 +42,39 @@ export class ExampleEntity extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get count(): BigInt {
-    let value = this.get("count");
-    return value!.toBigInt();
-  }
+  // get count(): BigInt {
+  //   let value = this.get("count");
+  //   return value!.toBigInt();
+  // }
 
-  set count(value: BigInt) {
-    this.set("count", Value.fromBigInt(value));
-  }
+  // set count(value: BigInt) {
+  //   this.set("count", Value.fromBigInt(value));
+  // }
 
-  get previousOwner(): Bytes {
-    let value = this.get("previousOwner");
+  // get previousOwner(): Bytes {
+  //   let value = this.get("previousOwner");
+  //   return value!.toBytes();
+  // }
+
+  // set previousOwner(value: Bytes) {
+  //   this.set("previousOwner", Value.fromBytes(value));
+  // }
+
+  // get newOwner(): Bytes {
+  //   let value = this.get("newOwner");
+  //   return value!.toBytes();
+  // }
+
+  // set newOwner(value: Bytes) {
+  //   this.set("newOwner", Value.fromBytes(value));
+  // }
+
+  get newPool(): Bytes {
+    let value = this.get("newPool");
     return value!.toBytes();
   }
 
-  set previousOwner(value: Bytes) {
-    this.set("previousOwner", Value.fromBytes(value));
-  }
-
-  get newOwner(): Bytes {
-    let value = this.get("newOwner");
-    return value!.toBytes();
-  }
-
-  set newOwner(value: Bytes) {
-    this.set("newOwner", Value.fromBytes(value));
+  set newPool(value: Bytes) {
+    this.set("newPool", Value.fromBytes(value));
   }
 }
