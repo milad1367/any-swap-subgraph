@@ -42,12 +42,12 @@ export class PoolEntity extends Entity {
     this.set("id", Value.fromString(value));
   }
 
-  get newPool(): Bytes {
-    let value = this.get("newPool");
+  get poolId(): Bytes {
+    let value = this.get("poolId");
     return value!.toBytes();
   }
 
-  set newPool(value: Bytes) {
-    this.set("newPool", Value.fromBytes(value));
+  set poolId(value: Bytes) {
+    this.set("poolId", Value.fromBytes(value));
   }
 }
