@@ -1,4 +1,4 @@
-type ExampleEntity @entity {
+type PoolEntity @entity {
   id: ID!
   newPool: Bytes! # address
 }

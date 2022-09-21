@@ -4,17 +4,17 @@ import {
   OwnershipTransferred,
   PoolCreated,
 } from "../generated/StakingPoolFactory/StakingPoolFactory";
-import { ExampleEntity } from "../generated/schema";
+import { PoolEntity } from "../generated/schema";
 
 export function handleOwnershipTransferred(event: OwnershipTransferred): void {
   // Entities can be loaded from the store using a string ID; this ID
   // needs to be unique across all entities of the same type
-  let entity = ExampleEntity.load(event.transaction.from.toHex());
+  let entity = PoolEntity.load(event.transaction.from.toHex());
 
   // Entities only exist after they have been saved to the store;
   // `null` checks allow to create entities on demand
   if (!entity) {
-    entity = new ExampleEntity(event.transaction.from.toHex());
+    entity = new PoolEntity(event.transaction.from.toHex());
 
     // Entity fields can be set using simple assignments
     //entity.count = BigInt.fromI32(0);
@@ -50,8 +50,8 @@ export function handleOwnershipTransferred(event: OwnershipTransferred): void {
 }
 
 export function handlePoolCreated(event: PoolCreated): void {
-  let pool = ExampleEntity.load(event.transaction.hash.toHex());
-  if (pool == null) pool = new ExampleEntity(event.transaction.hash.toHex());
+  let pool = PoolEntity.load(event.transaction.hash.toHex());
+  if (pool == null) pool = new PoolEntity(event.transaction.hash.toHex());
   pool.newPool = event.params.pool;
 
   pool.save();
