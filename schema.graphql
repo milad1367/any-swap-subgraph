@@ -1,4 +1,7 @@
 type PoolEntity @entity {
   id: ID!
   poolId: Bytes! # address
+  capacity: BigInt!
+  endTime: BigInt!
+  ticketValue: BigInt!
 }

@@ -50,4 +50,31 @@ export class PoolEntity extends Entity {
   set poolId(value: Bytes) {
     this.set("poolId", Value.fromBytes(value));
   }
+
+  get capacity(): BigInt {
+    let value = this.get("capacity");
+    return value!.toBigInt();
+  }
+
+  set capacity(value: BigInt) {
+    this.set("capacity", Value.fromBigInt(value));
+  }
+
+  get endTime(): BigInt {
+    let value = this.get("endTime");
+    return value!.toBigInt();
+  }
+
+  set endTime(value: BigInt) {
+    this.set("endTime", Value.fromBigInt(value));
+  }
+
+  get ticketValue(): BigInt {
+    let value = this.get("ticketValue");
+    return value!.toBigInt();
+  }
+
+  set ticketValue(value: BigInt) {
+    this.set("ticketValue", Value.fromBigInt(value));
+  }
 }
