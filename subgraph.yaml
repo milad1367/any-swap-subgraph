@@ -25,3 +25,22 @@ dataSources:
         - event: PoolCreated(address,uint256,uint256,uint256)
           handler: handlePoolCreated
       file: ./src/staking-pool-factory.ts
+templates:
+  - name: StakingPool
+    kind: ethereum/contract
+    network: goerli
+    source:
+      abi: StakingPool
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/staking-pool.ts
+      entities:
+        - StakingPool
+      abis:
+        - name: StakingPool
+          file: ./abis/StakingPool.json
+      eventHandlers:
+        - event: Stake(address,address)
+          handler: handleStake

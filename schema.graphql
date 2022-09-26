@@ -5,3 +5,8 @@ type PoolEntity @entity {
   endTime: BigInt!
   ticketValue: BigInt!
 }
+type StakeEntity @entity {
+  id: ID!
+  pool: Bytes! # address
+  staker: Bytes!
+}
