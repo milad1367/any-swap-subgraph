@@ -5,6 +5,8 @@ import {
   PoolCreated,
 } from "../generated/StakingPoolFactory/StakingPoolFactory";
 import { PoolEntity } from "../generated/schema";
+import { StakingPool } from "../generated/templates";
+
 // export function handleOwnershipTransferred(event: OwnershipTransferred): void {
 //   // Entities can be loaded from the store using a string ID; this ID
 //   // needs to be unique across all entities of the same type
@@ -56,4 +58,5 @@ export function handlePoolCreated(event: PoolCreated): void {
   pool.capacity = event.params.capacity;
   pool.endTime = event.params.endTime;
   pool.save();
+  StakingPool.create(event.params.pool);
 }

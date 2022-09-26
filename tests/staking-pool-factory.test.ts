@@ -9,7 +9,6 @@ import {
 import { Address, BigInt } from "@graphprotocol/graph-ts";
 import { PoolEntity } from "../generated/schema";
 import { OwnershipTransferred } from "../generated/StakingPoolFactory/StakingPoolFactory";
-import { handleOwnershipTransferred } from "../src/staking-pool-factory";
 import { createOwnershipTransferredEvent } from "./staking-pool-factory-utils";
 
 // Tests structure (matchstick-as >=0.5.0)
@@ -27,7 +26,6 @@ describe("Describe entity assertions", () => {
       previousOwner,
       newOwner
     );
-    handleOwnershipTransferred(newOwnershipTransferredEvent);
   });
 
   afterAll(() => {

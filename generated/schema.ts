@@ -78,3 +78,53 @@ export class PoolEntity extends Entity {
     this.set("ticketValue", Value.fromBigInt(value));
   }
 }
+
+export class StakeEntity extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save StakeEntity entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type StakeEntity must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+      );
+      store.set("StakeEntity", id.toString(), this);
+    }
+  }
+
+  static load(id: string): StakeEntity | null {
+    return changetype<StakeEntity | null>(store.get("StakeEntity", id));
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get pool(): Bytes {
+    let value = this.get("pool");
+    return value!.toBytes();
+  }
+
+  set pool(value: Bytes) {
+    this.set("pool", Value.fromBytes(value));
+  }
+
+  get staker(): Bytes {
+    let value = this.get("staker");
+    return value!.toBytes();
+  }
+
+  set staker(value: Bytes) {
+    this.set("staker", Value.fromBytes(value));
+  }
+}
