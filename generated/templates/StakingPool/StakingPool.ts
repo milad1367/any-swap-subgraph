@@ -10,6 +10,32 @@ import {
   BigInt
 } from "@graphprotocol/graph-ts";
 
+export class SetWinner extends ethereum.Event {
+  get params(): SetWinner__Params {
+    return new SetWinner__Params(this);
+  }
+}
+
+export class SetWinner__Params {
+  _event: SetWinner;
+
+  constructor(event: SetWinner) {
+    this._event = event;
+  }
+
+  get winner(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+
+  get pool(): Address {
+    return this._event.parameters[1].value.toAddress();
+  }
+
+  get owner(): Address {
+    return this._event.parameters[2].value.toAddress();
+  }
+}
+
 export class Stake extends ethereum.Event {
   get params(): Stake__Params {
     return new Stake__Params(this);
@@ -50,6 +76,25 @@ export class StakingPool extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(value[0].toBigInt());
+  }
+
+  defaultAddress(): Address {
+    let result = super.call("defaultAddress", "defaultAddress():(address)", []);
+
+    return result[0].toAddress();
+  }
+
+  try_defaultAddress(): ethereum.CallResult<Address> {
+    let result = super.tryCall(
+      "defaultAddress",
+      "defaultAddress():(address)",
+      []
+    );
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toAddress());
   }
 
   getNumberOfStakers(): BigInt {

@@ -6,7 +6,7 @@ dataSources:
     name: StakingPoolFactory
     network: goerli
     source:
-      address: "0x07031E3915cEF6a51d353c04da13889C272a8a39"
+      address: "0xB2D21AE2e63B7b2fD0b05C5220dA47AA8EC6c97D"
       abi: StakingPoolFactory
       startBlock: 7632182
     mapping:
@@ -20,8 +20,6 @@ dataSources:
         - name: StakingPoolFactory
           file: ./abis/StakingPoolFactory.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: PoolCreated(address,uint256,uint256,uint256)
           handler: handlePoolCreated
       file: ./src/staking-pool-factory.ts
@@ -44,3 +42,5 @@ templates:
       eventHandlers:
         - event: Stake(address,address)
           handler: handleStake
+        - event: SetWinner(address,address,address)
+          handler: handleSetWinner

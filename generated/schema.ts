@@ -127,4 +127,38 @@ export class StakeEntity extends Entity {
   set staker(value: Bytes) {
     this.set("staker", Value.fromBytes(value));
   }
+
+  get winner(): Bytes | null {
+    let value = this.get("winner");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set winner(value: Bytes | null) {
+    if (!value) {
+      this.unset("winner");
+    } else {
+      this.set("winner", Value.fromBytes(<Bytes>value));
+    }
+  }
+
+  get winnerTx(): Bytes | null {
+    let value = this.get("winnerTx");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set winnerTx(value: Bytes | null) {
+    if (!value) {
+      this.unset("winnerTx");
+    } else {
+      this.set("winnerTx", Value.fromBytes(<Bytes>value));
+    }
+  }
 }

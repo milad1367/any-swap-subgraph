@@ -1,4 +1,4 @@
-import { BigInt } from "@graphprotocol/graph-ts";
+import { BigInt, log } from "@graphprotocol/graph-ts";
 import {
   StakingPoolFactory,
   OwnershipTransferred,
@@ -57,6 +57,10 @@ export function handlePoolCreated(event: PoolCreated): void {
   pool.ticketValue = event.params.ticketValue;
   pool.capacity = event.params.capacity;
   pool.endTime = event.params.endTime;
+  log.info("handlePoolCreated", [
+    event.params.pool.toHexString(),
+    event.transaction.hash.toHexString(),
+  ]);
   pool.save();
   StakingPool.create(event.params.pool);
 }

@@ -9,4 +9,6 @@ type StakeEntity @entity {
   id: ID!
   pool: Bytes! # address
   staker: Bytes!
+  winner: Bytes # address
+  winnerTx: Bytes # address
 }
