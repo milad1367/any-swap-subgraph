@@ -2,7 +2,7 @@ import {
   Stake,
   SetWinner,
 } from "../generated/templates/StakingPool/StakingPool";
-import { StakeEntity } from "../generated/schema";
+import { StakeEntity, PoolEntity } from "../generated/schema";
 import { log } from "@graphprotocol/graph-ts";
 
 export function handleStake(event: Stake): void {
@@ -18,7 +18,7 @@ export function handleStake(event: Stake): void {
   stake.save();
 }
 export function handleSetWinner(event: SetWinner): void {
-  let pool = StakeEntity.load(event.params.pool.toHexString());
+  let pool = PoolEntity.load(event.params.pool.toHexString());
   if (pool == null) {
     log.error("can,t find pool in handleSetWinner", [
       event.address.toHexString(),

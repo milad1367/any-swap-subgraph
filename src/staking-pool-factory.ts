@@ -51,8 +51,8 @@ import { StakingPool } from "../generated/templates";
 // }
 
 export function handlePoolCreated(event: PoolCreated): void {
-  let pool = PoolEntity.load(event.transaction.hash.toHex());
-  if (pool == null) pool = new PoolEntity(event.transaction.hash.toHex());
+  let pool = PoolEntity.load(event.params.pool.toHexString());
+  if (pool == null) pool = new PoolEntity(event.params.pool.toHexString());
   pool.poolId = event.params.pool;
   pool.ticketValue = event.params.ticketValue;
   pool.capacity = event.params.capacity;

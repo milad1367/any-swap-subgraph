@@ -4,11 +4,11 @@ type PoolEntity @entity {
   capacity: BigInt!
   endTime: BigInt!
   ticketValue: BigInt!
+  winner: Bytes # address
+  winnerTx: Bytes # address
 }
 type StakeEntity @entity {
   id: ID!
   pool: Bytes! # address
   staker: Bytes!
-  winner: Bytes # address
-  winnerTx: Bytes # address
 }
