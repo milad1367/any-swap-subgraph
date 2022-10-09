@@ -6,9 +6,12 @@ type PoolEntity @entity {
   ticketValue: BigInt!
   winner: Bytes # address
   winnerTx: Bytes # address
+  poolTx: Bytes!
+  sumOfStake: Int!
 }
 type StakeEntity @entity {
   id: ID!
   pool: Bytes! # address
   staker: Bytes!
+  stakeTx: Bytes!
 }

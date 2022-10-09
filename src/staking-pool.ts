@@ -7,9 +7,15 @@ import { log } from "@graphprotocol/graph-ts";
 
 export function handleStake(event: Stake): void {
   let stake = StakeEntity.load(event.params.pool.toHexString());
+  let pool = PoolEntity.load(event.params.pool.toHexString());
   if (stake == null) stake = new StakeEntity(event.params.pool.toHexString());
   stake.staker = event.params.staker;
   stake.pool = event.params.pool;
+  stake.stakeTx = event.transaction.hash;
+  if (pool) {
+    pool.sumOfStake++;
+    pool.save();
+  }
   log.info("successfully save stake in handleStake", [
     event.params.staker.toHexString(),
     event.params.pool.toHexString(),

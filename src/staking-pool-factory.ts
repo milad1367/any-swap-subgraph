@@ -57,6 +57,8 @@ export function handlePoolCreated(event: PoolCreated): void {
   pool.ticketValue = event.params.ticketValue;
   pool.capacity = event.params.capacity;
   pool.endTime = event.params.endTime;
+  pool.poolTx = event.transaction.hash;
+  pool.sumOfStake = 0;
   log.info("handlePoolCreated", [
     event.params.pool.toHexString(),
     event.transaction.hash.toHexString(),

@@ -111,6 +111,24 @@ export class PoolEntity extends Entity {
       this.set("winnerTx", Value.fromBytes(<Bytes>value));
     }
   }
+
+  get poolTx(): Bytes {
+    let value = this.get("poolTx");
+    return value!.toBytes();
+  }
+
+  set poolTx(value: Bytes) {
+    this.set("poolTx", Value.fromBytes(value));
+  }
+
+  get sumOfStake(): i32 {
+    let value = this.get("sumOfStake");
+    return value!.toI32();
+  }
+
+  set sumOfStake(value: i32) {
+    this.set("sumOfStake", Value.fromI32(value));
+  }
 }
 
 export class StakeEntity extends Entity {
@@ -160,5 +178,14 @@ export class StakeEntity extends Entity {
 
   set staker(value: Bytes) {
     this.set("staker", Value.fromBytes(value));
+  }
+
+  get stakeTx(): Bytes {
+    let value = this.get("stakeTx");
+    return value!.toBytes();
+  }
+
+  set stakeTx(value: Bytes) {
+    this.set("stakeTx", Value.fromBytes(value));
   }
 }
