@@ -245,7 +245,7 @@ export class SelfPoolFactoryOwnershipTransferred extends Entity {
   }
 }
 
-export class SelfPoolCreated extends Entity {
+export class SelfPoolEntity extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -253,18 +253,18 @@ export class SelfPoolCreated extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save SelfPoolCreated entity without an ID");
+    assert(id != null, "Cannot save SelfPoolEntity entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type SelfPoolCreated must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type SelfPoolEntity must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
       );
-      store.set("SelfPoolCreated", id.toString(), this);
+      store.set("SelfPoolEntity", id.toString(), this);
     }
   }
 
-  static load(id: string): SelfPoolCreated | null {
-    return changetype<SelfPoolCreated | null>(store.get("SelfPoolCreated", id));
+  static load(id: string): SelfPoolEntity | null {
+    return changetype<SelfPoolEntity | null>(store.get("SelfPoolEntity", id));
   }
 
   get id(): string {

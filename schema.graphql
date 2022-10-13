@@ -21,7 +21,7 @@ type SelfPoolFactoryOwnershipTransferred @entity {
   newOwner: Bytes! # address
 }
 
-type SelfPoolCreated @entity {
+type SelfPoolEntity @entity {
   id: ID!
   pool: Bytes! # address
   ticketValue: BigInt! # uint256
