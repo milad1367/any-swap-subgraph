@@ -2,6 +2,9 @@
   "goerli": {
     "StakingPoolFactory": {
       "address": "0x07031E3915cEF6a51d353c04da13889C272a8a39"
+    },
+    "SelfPoolFactory": {
+      "address": "0x7fFc19fB430A1f1d71a65e761Ea1cE8943EB4796"
     }
   }
 }

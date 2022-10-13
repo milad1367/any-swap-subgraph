@@ -23,6 +23,29 @@ dataSources:
         - event: PoolCreated(address,uint256,uint256,uint256)
           handler: handlePoolCreated
       file: ./src/staking-pool-factory.ts
+  - kind: ethereum
+    name: SelfPoolFactory
+    network: goerli
+    source:
+      address: "0x7fFc19fB430A1f1d71a65e761Ea1cE8943EB4796"
+      abi: SelfPoolFactory
+      startBlock: 7711463
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - SelfPoolFactoryOwnershipTransferred
+        - SelfPoolCreated
+      abis:
+        - name: SelfPoolFactory
+          file: ./abis/SelfPoolFactory.json
+      eventHandlers:
+        - event: SelfPoolFactoryOwnershipTransferred(indexed address,indexed address)
+          handler: handleSelfPoolFactoryOwnershipTransferred
+        - event: SelfPoolCreated(address,uint256,uint256,uint256,address,uint256)
+          handler: handleSelfPoolCreated
+      file: ./src/self-pool-factory.ts
 templates:
   - name: StakingPool
     kind: ethereum/contract

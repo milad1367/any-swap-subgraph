@@ -15,3 +15,18 @@ type StakeEntity @entity {
   staker: Bytes!
   stakeTx: Bytes!
 }
+type SelfPoolFactoryOwnershipTransferred @entity {
+  id: ID!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
+
+type SelfPoolCreated @entity {
+  id: ID!
+  pool: Bytes! # address
+  ticketValue: BigInt! # uint256
+  endTime: BigInt! # uint256
+  capacity: BigInt! # uint256
+  owner: Bytes! # address
+  ownerPercent: BigInt! # uint256
+}

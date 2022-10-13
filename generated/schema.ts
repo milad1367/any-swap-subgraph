@@ -189,3 +189,144 @@ export class StakeEntity extends Entity {
     this.set("stakeTx", Value.fromBytes(value));
   }
 }
+
+export class SelfPoolFactoryOwnershipTransferred extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save SelfPoolFactoryOwnershipTransferred entity without an ID"
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type SelfPoolFactoryOwnershipTransferred must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+      );
+      store.set("SelfPoolFactoryOwnershipTransferred", id.toString(), this);
+    }
+  }
+
+  static load(id: string): SelfPoolFactoryOwnershipTransferred | null {
+    return changetype<SelfPoolFactoryOwnershipTransferred | null>(
+      store.get("SelfPoolFactoryOwnershipTransferred", id)
+    );
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get previousOwner(): Bytes {
+    let value = this.get("previousOwner");
+    return value!.toBytes();
+  }
+
+  set previousOwner(value: Bytes) {
+    this.set("previousOwner", Value.fromBytes(value));
+  }
+
+  get newOwner(): Bytes {
+    let value = this.get("newOwner");
+    return value!.toBytes();
+  }
+
+  set newOwner(value: Bytes) {
+    this.set("newOwner", Value.fromBytes(value));
+  }
+}
+
+export class SelfPoolCreated extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save SelfPoolCreated entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type SelfPoolCreated must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+      );
+      store.set("SelfPoolCreated", id.toString(), this);
+    }
+  }
+
+  static load(id: string): SelfPoolCreated | null {
+    return changetype<SelfPoolCreated | null>(store.get("SelfPoolCreated", id));
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get pool(): Bytes {
+    let value = this.get("pool");
+    return value!.toBytes();
+  }
+
+  set pool(value: Bytes) {
+    this.set("pool", Value.fromBytes(value));
+  }
+
+  get ticketValue(): BigInt {
+    let value = this.get("ticketValue");
+    return value!.toBigInt();
+  }
+
+  set ticketValue(value: BigInt) {
+    this.set("ticketValue", Value.fromBigInt(value));
+  }
+
+  get endTime(): BigInt {
+    let value = this.get("endTime");
+    return value!.toBigInt();
+  }
+
+  set endTime(value: BigInt) {
+    this.set("endTime", Value.fromBigInt(value));
+  }
+
+  get capacity(): BigInt {
+    let value = this.get("capacity");
+    return value!.toBigInt();
+  }
+
+  set capacity(value: BigInt) {
+    this.set("capacity", Value.fromBigInt(value));
+  }
+
+  get owner(): Bytes {
+    let value = this.get("owner");
+    return value!.toBytes();
+  }
+
+  set owner(value: Bytes) {
+    this.set("owner", Value.fromBytes(value));
+  }
+
+  get ownerPercent(): BigInt {
+    let value = this.get("ownerPercent");
+    return value!.toBigInt();
+  }
+
+  set ownerPercent(value: BigInt) {
+    this.set("ownerPercent", Value.fromBigInt(value));
+  }
+}
