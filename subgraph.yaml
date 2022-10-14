@@ -67,3 +67,23 @@ templates:
           handler: handleStake
         - event: SetWinner(address,address,address)
           handler: handleSetWinner
+  - name: SelfStakingPool
+    kind: ethereum/contract
+    network: goerli
+    source:
+      abi: SelfStakingPool
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/self-staking-pool.ts
+      entities:
+        - SelfStakingPool
+      abis:
+        - name: SelfStakingPool
+          file: ./abis/SelfStakingPool.json
+      eventHandlers:
+        - event: SelfPoolStake(address,address)
+          handler: handleStake
+        - event: SelfPoolSetWinner(address,address,address)
+          handler: handleSetWinner

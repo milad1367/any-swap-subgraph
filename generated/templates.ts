@@ -19,3 +19,17 @@ export class StakingPool extends DataSourceTemplate {
     );
   }
 }
+
+export class SelfStakingPool extends DataSourceTemplate {
+  static create(address: Address): void {
+    DataSourceTemplate.create("SelfStakingPool", [address.toHex()]);
+  }
+
+  static createWithContext(address: Address, context: DataSourceContext): void {
+    DataSourceTemplate.createWithContext(
+      "SelfStakingPool",
+      [address.toHex()],
+      context
+    );
+  }
+}

@@ -6,6 +6,7 @@ import {
   SelfPoolFactoryOwnershipTransferred,
   SelfPoolEntity,
 } from "../generated/schema";
+import { SelfStakingPool } from "../generated/templates";
 
 export function handleSelfPoolFactoryOwnershipTransferred(
   event: SelfPoolFactoryOwnershipTransferredEvent
@@ -19,14 +20,15 @@ export function handleSelfPoolFactoryOwnershipTransferred(
 }
 
 export function handleSelfPoolCreated(event: SelfPoolCreatedEvent): void {
-  let entity = new SelfPoolEntity(
-    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
-  );
-  entity.pool = event.params.pool;
+  let entity = new SelfPoolEntity(event.params.pool.toHexString());
+  entity.poolId = event.params.pool;
+  entity.poolTx = event.transaction.hash;
   entity.ticketValue = event.params.ticketValue;
   entity.endTime = event.params.endTime;
   entity.capacity = event.params.capacity;
   entity.owner = event.params.owner;
   entity.ownerPercent = event.params.ownerPercent;
+  entity.sumOfStake = 0;
   entity.save();
+  SelfStakingPool.create(event.params.pool);
 }
