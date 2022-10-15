@@ -7,10 +7,8 @@ import { SelfStakeEntity, SelfPoolEntity } from "../generated/schema";
 import { log } from "@graphprotocol/graph-ts";
 
 export function handleStake(event: SelfPoolStake): void {
-  let stake = SelfStakeEntity.load(event.params.pool.toHexString());
   let pool = SelfPoolEntity.load(event.params.pool.toHexString());
-  if (stake == null)
-    stake = new SelfStakeEntity(event.params.pool.toHexString());
+  let stake = new SelfStakeEntity(event.transaction.hash.toHexString());
   stake.staker = event.params.staker;
   stake.pool = event.params.pool;
   stake.stakeTx = event.transaction.hash;
