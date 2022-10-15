@@ -6,7 +6,7 @@ dataSources:
     name: StakingPoolFactory
     network: goerli
     source:
-      address: "0xB2D21AE2e63B7b2fD0b05C5220dA47AA8EC6c97D"
+      address: "0x7fFc19fB430A1f1d71a65e761Ea1cE8943EB4796"
       abi: StakingPoolFactory
       startBlock: 7711463
     mapping:

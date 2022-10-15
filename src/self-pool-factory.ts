@@ -1,23 +1,6 @@
-import {
-  SelfPoolFactoryOwnershipTransferred as SelfPoolFactoryOwnershipTransferredEvent,
-  SelfPoolCreated as SelfPoolCreatedEvent,
-} from "../generated/SelfPoolFactory/SelfPoolFactory";
-import {
-  SelfPoolFactoryOwnershipTransferred,
-  SelfPoolEntity,
-} from "../generated/schema";
+import { SelfPoolCreated as SelfPoolCreatedEvent } from "../generated/SelfPoolFactory/SelfPoolFactory";
+import { SelfPoolEntity } from "../generated/schema";
 import { SelfStakingPool } from "../generated/templates";
-
-export function handleSelfPoolFactoryOwnershipTransferred(
-  event: SelfPoolFactoryOwnershipTransferredEvent
-): void {
-  let entity = new SelfPoolFactoryOwnershipTransferred(
-    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
-  );
-  entity.previousOwner = event.params.previousOwner;
-  entity.newOwner = event.params.newOwner;
-  entity.save();
-}
 
 export function handleSelfPoolCreated(event: SelfPoolCreatedEvent): void {
   let entity = new SelfPoolEntity(event.params.pool.toHexString());
