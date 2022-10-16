@@ -61,12 +61,20 @@ export class SelfPoolCreated__Params {
     return this._event.parameters[3].value.toBigInt();
   }
 
-  get owner(): Address {
+  get creatorAddress(): Address {
     return this._event.parameters[4].value.toAddress();
   }
 
-  get ownerPercent(): BigInt {
+  get creatorPercent(): BigInt {
     return this._event.parameters[5].value.toBigInt();
+  }
+
+  get owner(): Address {
+    return this._event.parameters[6].value.toAddress();
+  }
+
+  get ownerPercent(): BigInt {
+    return this._event.parameters[7].value.toBigInt();
   }
 }
 
@@ -75,20 +83,20 @@ export class SelfPoolFactory extends ethereum.SmartContract {
     return new SelfPoolFactory("SelfPoolFactory", address);
   }
 
-  getMaxOwnerPercent(): BigInt {
+  getMaxCreatorPercent(): BigInt {
     let result = super.call(
-      "getMaxOwnerPercent",
-      "getMaxOwnerPercent():(uint256)",
+      "getMaxCreatorPercent",
+      "getMaxCreatorPercent():(uint256)",
       []
     );
 
     return result[0].toBigInt();
   }
 
-  try_getMaxOwnerPercent(): ethereum.CallResult<BigInt> {
+  try_getMaxCreatorPercent(): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
-      "getMaxOwnerPercent",
-      "getMaxOwnerPercent():(uint256)",
+      "getMaxCreatorPercent",
+      "getMaxCreatorPercent():(uint256)",
       []
     );
     if (result.reverted) {
@@ -146,8 +154,12 @@ export class ConstructorCall__Inputs {
     this._call = call;
   }
 
-  get _maxOwnerPercent(): BigInt {
+  get _maxCreatorPercent(): BigInt {
     return this._call.inputValues[0].value.toBigInt();
+  }
+
+  get _ownerPercent(): BigInt {
+    return this._call.inputValues[1].value.toBigInt();
   }
 }
 
@@ -188,7 +200,7 @@ export class CreatePoolCall__Inputs {
     return this._call.inputValues[2].value.toBigInt();
   }
 
-  get ownerPercent(): BigInt {
+  get creatorPercent(): BigInt {
     return this._call.inputValues[3].value.toBigInt();
   }
 }

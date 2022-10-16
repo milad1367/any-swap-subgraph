@@ -27,7 +27,7 @@ dataSources:
     name: SelfPoolFactory
     network: goerli
     source:
-      address: "0x597459346Da8536fC0aF0f1a8192D673697a8AFf"
+      address: "0xD115C7cf905E4152c9816178e7f1fA8517387DDC"
       abi: SelfPoolFactory
       startBlock: 7711463
     mapping:
@@ -43,7 +43,7 @@ dataSources:
       eventHandlers:
         - event: SelfPoolFactoryOwnershipTransferred(indexed address,indexed address)
           handler: handleSelfPoolFactoryOwnershipTransferred
-        - event: SelfPoolCreated(address,uint256,uint256,uint256,address,uint256)
+        - event: SelfPoolCreated(address,uint256,uint256,uint256,address,uint256,address,uint256)
           handler: handleSelfPoolCreated
       file: ./src/self-pool-factory.ts
 templates:
@@ -85,5 +85,5 @@ templates:
       eventHandlers:
         - event: SelfPoolStake(address,address)
           handler: handleStake
-        - event: SelfPoolSetWinner(address,address,address)
+        - event: SelfPoolSetWinner(address,address,address,address)
           handler: handleSetWinner

@@ -3,7 +3,12 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_maxOwnerPercent",
+        "name": "_maxCreatorPercent",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_ownerPercent",
         "type": "uint256"
       }
     ],
@@ -59,6 +64,18 @@
       {
         "indexed": false,
         "internalType": "address",
+        "name": "creatorAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "creatorPercent",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
         "name": "owner",
         "type": "address"
       },
@@ -74,10 +91,26 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "ticketValue", "type": "uint256" },
-      { "internalType": "uint256", "name": "endTime", "type": "uint256" },
-      { "internalType": "uint256", "name": "capacity", "type": "uint256" },
-      { "internalType": "uint256", "name": "ownerPercent", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "ticketValue",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "endTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "capacity",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "creatorPercent",
+        "type": "uint256"
+      }
     ],
     "name": "createPool",
     "outputs": [],
@@ -86,15 +119,27 @@
   },
   {
     "inputs": [],
-    "name": "getMaxOwnerPercent",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "getMaxCreatorPercent",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "owner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
@@ -107,7 +152,11 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "newOwner", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
     ],
     "name": "transferOwnership",
     "outputs": [],
@@ -117,7 +166,13 @@
   {
     "inputs": [],
     "name": "usdc",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   }

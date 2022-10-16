@@ -18,13 +18,23 @@
       },
       {
         "internalType": "address",
-        "name": "_owner",
+        "name": "_creatorAddress",
         "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_creatorPercent",
+        "type": "uint256"
       },
       {
         "internalType": "uint256",
         "name": "_ownerPercent",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_ownerAddress",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -43,6 +53,12 @@
         "indexed": false,
         "internalType": "address",
         "name": "pool",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "creator",
         "type": "address"
       },
       {

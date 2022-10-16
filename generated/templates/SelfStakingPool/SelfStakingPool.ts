@@ -31,8 +31,12 @@ export class SelfPoolSetWinner__Params {
     return this._event.parameters[1].value.toAddress();
   }
 
-  get owner(): Address {
+  get creator(): Address {
     return this._event.parameters[2].value.toAddress();
+  }
+
+  get owner(): Address {
+    return this._event.parameters[3].value.toAddress();
   }
 }
 
@@ -274,12 +278,20 @@ export class ConstructorCall__Inputs {
     return this._call.inputValues[2].value.toBigInt();
   }
 
-  get _owner(): Address {
+  get _creatorAddress(): Address {
     return this._call.inputValues[3].value.toAddress();
   }
 
-  get _ownerPercent(): BigInt {
+  get _creatorPercent(): BigInt {
     return this._call.inputValues[4].value.toBigInt();
+  }
+
+  get _ownerPercent(): BigInt {
+    return this._call.inputValues[5].value.toBigInt();
+  }
+
+  get _ownerAddress(): Address {
+    return this._call.inputValues[6].value.toAddress();
   }
 }
 
