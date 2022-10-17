@@ -106,6 +106,29 @@ export class SelfPoolFactory extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
 
+  getOwnerPercent(): BigInt {
+    let result = super.call(
+      "getOwnerPercent",
+      "getOwnerPercent():(uint256)",
+      []
+    );
+
+    return result[0].toBigInt();
+  }
+
+  try_getOwnerPercent(): ethereum.CallResult<BigInt> {
+    let result = super.tryCall(
+      "getOwnerPercent",
+      "getOwnerPercent():(uint256)",
+      []
+    );
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBigInt());
+  }
+
   owner(): Address {
     let result = super.call("owner", "owner():(address)", []);
 

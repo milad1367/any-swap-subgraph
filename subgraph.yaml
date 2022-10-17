@@ -27,7 +27,7 @@ dataSources:
     name: SelfPoolFactory
     network: goerli
     source:
-      address: "0xD115C7cf905E4152c9816178e7f1fA8517387DDC"
+      address: "0xd7a62f3edF92Ec621eb4aA5d5b1Efe3D23613b2a"
       abi: SelfPoolFactory
       startBlock: 7711463
     mapping:
