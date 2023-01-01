@@ -35,6 +35,7 @@ export function handleSetWinner(event: SelfPoolSetWinner): void {
   }
   pool.winner = event.params.winner;
   pool.winnerTx = event.transaction.hash;
+  pool.poolIsMature = event.params.poolIsMature;
 
   log.info("successfully save pool in handleSetWinner", [
     event.address.toHexString(),

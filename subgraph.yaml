@@ -27,7 +27,7 @@ dataSources:
     name: SelfPoolFactory
     network: goerli
     source:
-      address: "0xd7a62f3edF92Ec621eb4aA5d5b1Efe3D23613b2a"
+      address: "0xEe7997eCE4DE83A13103aBbcF8FB099729cB8D7b"
       abi: SelfPoolFactory
       startBlock: 7711463
     mapping:
@@ -85,5 +85,5 @@ templates:
       eventHandlers:
         - event: SelfPoolStake(address,address)
           handler: handleStake
-        - event: SelfPoolSetWinner(address,address,address,address)
+        - event: SelfPoolSetWinner(address,address,address,address,bool)
           handler: handleSetWinner

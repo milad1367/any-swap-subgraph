@@ -12,6 +12,7 @@ export function handleSelfPoolCreated(event: SelfPoolCreatedEvent): void {
   entity.owner = event.params.owner;
   entity.ownerPercent = event.params.ownerPercent;
   entity.sumOfStake = 0;
+  entity.poolIsMature = false;
   entity.save();
   SelfStakingPool.create(event.params.pool);
 }

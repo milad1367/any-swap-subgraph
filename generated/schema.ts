@@ -147,6 +147,15 @@ export class SelfPoolEntity extends Entity {
       this.set("winnerTx", Value.fromBytes(<Bytes>value));
     }
   }
+
+  get poolIsMature(): boolean {
+    let value = this.get("poolIsMature");
+    return value!.toBoolean();
+  }
+
+  set poolIsMature(value: boolean) {
+    this.set("poolIsMature", Value.fromBoolean(value));
+  }
 }
 
 export class SelfStakeEntity extends Entity {
