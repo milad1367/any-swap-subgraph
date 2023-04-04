@@ -156,6 +156,15 @@ export class SelfPoolEntity extends Entity {
   set poolIsMature(value: boolean) {
     this.set("poolIsMature", Value.fromBoolean(value));
   }
+
+  get creatorAddress(): Bytes {
+    let value = this.get("creatorAddress");
+    return value!.toBytes();
+  }
+
+  set creatorAddress(value: Bytes) {
+    this.set("creatorAddress", Value.fromBytes(value));
+  }
 }
 
 export class SelfStakeEntity extends Entity {

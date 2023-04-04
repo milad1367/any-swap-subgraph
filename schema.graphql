@@ -11,6 +11,7 @@ type SelfPoolEntity @entity {
   winner: Bytes # address
   winnerTx: Bytes # address
   poolIsMature: Boolean
+  creatorAddress: Bytes! # address
 }
 type SelfStakeEntity @entity {
   id: ID!

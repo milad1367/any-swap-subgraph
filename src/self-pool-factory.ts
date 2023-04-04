@@ -11,6 +11,7 @@ export function handleSelfPoolCreated(event: SelfPoolCreatedEvent): void {
   entity.capacity = event.params.capacity;
   entity.owner = event.params.owner;
   entity.ownerPercent = event.params.ownerPercent;
+  entity.creatorAddress = event.params.creatorAddress;
   entity.sumOfStake = 0;
   entity.poolIsMature = false;
   entity.save();
